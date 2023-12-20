@@ -25,17 +25,21 @@
         {% endif %}
 
         {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/murasakisite.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/murasakisite.css' %}">
 
         {% block extra_css %}
         {# Override this in templates to add extra stylesheets #}
         {% endblock %}
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
+    <body>
+        <div class="container" style="padding-top: 20px">
+
+        {% include 'nav_bar.html' %}
     <header class="header">
-        <div>header</div>
+        {% block header %}
+        {% endblock %}
     </header>
     <main class="main">
         {% block content %}{% endblock %}
@@ -52,5 +56,7 @@
     <footer class="footer" role="contentinfo">
         <p><span>Copyright &copy; Murasaki. </span></p>
     </footer>
+    </div>
+
     </body>
 </html>

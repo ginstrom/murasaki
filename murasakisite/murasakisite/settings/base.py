@@ -24,6 +24,11 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
+    "band",
+    "music",
+    "tour",
+    "news",
+    "shop",
     "home",
     "search",
     # wagtail-localize apps
