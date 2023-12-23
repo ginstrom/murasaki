@@ -1,0 +1,79 @@
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+{# Navigation #}
+<div classs="container" style="max-width: 100%; padding: 0; margin:">
+<nav class="navbar navbar-expand-lg justify-content-center" style="background-color: #520b5e">
+    <div class="container">
+        <div class="collapse navbar-collapse" id="navbarNavLeft">
+            <ul class="navbar-nav flex-grow-1">
+                {# Home #}
+                <li class="nav-item flex-fill text-center">
+                    <a class="nav-link active" style="color: #dff04a"
+                        href="/{{ LANGUAGE_CODE }}/">
+                        {{ _('Home') }}
+                    </a>
+                </li>
+                {# Band #}
+                <li class="nav-item flex-fill text-center">
+                    <a class="nav-link active" style="color: #dff04a"
+                        href="/{{ LANGUAGE_CODE }}/band/">
+                        {{ _('Band') }}
+                    </a>
+                </li>
+                {# Music #}
+                <li class="nav-item flex-fill text-center">
+                    <a class="nav-link active" style="color: #dff04a"
+                        href="/{{ LANGUAGE_CODE }}/music/">
+                        {{ _('Music') }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+        {# BRAND #}
+        <div class="justify-content-center text-center">
+            <a class="navbar-brand mx-auto" style="color: #dff04a"
+                href="/{{ LANGUAGE_CODE }}/">
+                <img src="{% static 'img/logo.jpeg' %}" alt="MURASAKI" class="img-fluid" style="width: 150px">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNavRight">
+            <ul class="navbar-nav flex-grow-1">
+                {# Tour #}
+                <li class="nav-item flex-fill text-center">
+                    <a class="nav-link active" style="color: #dff04a"
+                        href="/{{ LANGUAGE_CODE }}/tour/">
+                        {{ _('Tour') }}
+                    </a>
+                </li>
+                {# News #}
+                <li class="nav-item flex-fill text-center">
+                    <a class="nav-link active" style="color: #dff04a"
+                        href="/{{ LANGUAGE_CODE }}/news/">
+                        {{ _('News') }}
+                    </a>
+                </li>
+                {# Shop #}
+                <li class="nav-item flex-fill text-center">
+                    <a class="nav-link active" style="color: #dff04a"
+                        href="/{{ LANGUAGE_CODE }}/shop/">
+                        {{ _('Shop') }}
+                    </a>
+                </li>
+                {# Language #}
+                <li class="nav-item flex-fill text-center">
+                    {% if page %}
+                        {% for translation in page.get_translations.live %}
+                            <a class="nav-link active" style="color: #dff04a; font-size: 0.8rem"
+                            href="{% pageurl translation %}" rel="alternate" hreflang="{{ translation.locale.language_code }}">
+                                {{ translation.locale.language_name_local }}
+                            </a>
+                        {% endfor %}
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+</div>

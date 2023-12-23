@@ -24,8 +24,17 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
+    "band",
+    "music",
+    "tour",
+    "news",
+    "shop",
     "home",
     "search",
+    # wagtail-localize apps
+    "wagtail_localize",
+    "wagtail_localize.locales",
+    # -- end wagtail-localize apps
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
@@ -55,6 +64,8 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    # wagtail locale middleware
+    "django.middleware.locale.LocaleMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
 
@@ -114,16 +125,20 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
-
 TIME_ZONE = "UTC"
 
+LANGUAGE_CODE='ja'
 USE_I18N = True
-
 USE_L10N = True
+WAGTAIL_I18N_ENABLED = True
 
 USE_TZ = True
 
+# define the languages you want to manage
+WAGTAIL_CONTENT_LANGUAGES = LANGUAGES = [
+    ("ja", "Japanese"),
+    ("en", "English"),
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/

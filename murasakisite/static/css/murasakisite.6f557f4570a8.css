@@ -1,0 +1,13 @@
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    font-size: 16pt;
+    font-weight: bold;
+    font-family: sans-serif;
+  }
+  
+  .navbar-brand {
+    margin-left: auto;
+    margin-right: auto;
+  }
