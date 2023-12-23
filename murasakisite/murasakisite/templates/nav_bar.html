@@ -1,4 +1,5 @@
 {% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
 {% load static %}
 
 {# Navigation #}
@@ -62,12 +63,14 @@
                 </li>
                 {# Language #}
                 <li class="nav-item flex-fill text-center">
-                    {% for translation in page.get_translations.live %}
-                    <a class="nav-link active" style="color: #dff04a; font-size: 0.8rem"
-                        href="{{ translation.url }}">
-                        {{  translation.locale.language_name_local  }}
-                    </a>
-                    {% endfor %}
+                    {% if page %}
+                        {% for translation in page.get_translations.live %}
+                            <a class="nav-link active" style="color: #dff04a; font-size: 0.8rem"
+                            href="{% pageurl translation %}" rel="alternate" hreflang="{{ translation.locale.language_code }}">
+                                {{ translation.locale.language_name_local }}
+                            </a>
+                        {% endfor %}
+                    {% endif %}
                 </li>
             </ul>
         </div>
