@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+
+    <h1>{{ page.title }}</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <p>{{ page.intro|safe }}</p>
+        </div>
+    </div>
+
+        {% for news in news_items %}
+        <div class="row" style="margin-top: 20px;">
+        <div class="col-md-3">
+            <a href="{{ news.get_absolute_url }}">
+                <img
+                        alt="AltText"
+                        src="{{ news.image.url }}"
+                        class="img-fluid"
+                        style="height: 200px; width: auto;"
+                >
+            </a>
+        </div>
+        <div class="col-md-6">
+            <div>{{ news.date }}</div>
+            <h4>{{ news.title }}</h4>
+            <div class="py-2 bg-dark text-white center-block text-center w-25">
+                <a
+                        href="{{ news.get_absolute_url }}"
+                        class="text-light text-decoration-none"
+                >
+                    {{ _('READ MORE') }}
+                </a>
+            </div>
+        </div>
+    </div>
+        {% endfor %}
+    {# navigation #}
+
+    {# navigation #}
+<div class="row">
+<nav aria-label="Page navigation" style="margin-top: 20px;">
+  <ul class="pagination">
+    {% if news_items.has_previous %}
+    <li class="page-item">
+      <a
+          class="page-link"
+          href="{{ page.get_absolute_url }}?page={{ news_items.previous_page_number }}"
+          aria-label="Previous"
+      >
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item">
+        <a
+            class="page-link"
+            href="{{ page.get_absolute_url }}?page={{ news_items.previous_page_number }}"
+        >
+            <span aria-hidden="true">{{ news_items.previous_page_number }}</span>
+        </a>
+    </li>
+    {% else %}
+    <li class="page-item disabled" aria-disabled="true">
+        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&laquo;</a>
+    </li>
+    {% endif %}
+
+    <li class="page-item active" aria-current="page">
+      <a
+          class="page-link"
+          href="{{ page.get_absolute_url }}?page={{ news_items.number }}"
+      >
+          <span aria-hidden="true">{{ news_items.number }}</span>
+      </a>
+    </li>
+
+    {% if news_items.has_next %}
+      <li class="page-item">
+          <a
+                  class="page-link"
+                  href="{{ page.get_absolute_url }}?page={{ news_items.next_page_number }}"
+          >
+              <span aria-hidden="true">{{ news_items.next_page_number }}</span>
+          </a>
+      </li>
+      <li class="page-item">
+          <a
+                  class="page-link"
+                  href="{{ page.get_absolute_url }}?page={{ news_items.next_page_number }}"
+                  aria-label="Next"
+          >
+              <span aria-hidden="true">&raquo;</span>
+          </a>
+      </li>
+      {% else %}
+      <li class="page-item disabled" aria-disabled="true">
+          <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&raquo;</a>
+      </li>
+      {% endif %}
+  </ul>
+</nav>
+</div>
+
+</div>
+{% endblock content %}

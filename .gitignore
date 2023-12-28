@@ -127,3 +127,14 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# OS files
+.DS_Store
+
+# IDE files
+.idea/
+
+# files generated in collectstatic
+murasaki/static/*
+# uploaded files
+murasaki/murasaki/media/*

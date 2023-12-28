@@ -1,6 +1,7 @@
-{% load i18n parler_tags static %}
+{% load i18n %}
+{% load parler_tags static %}
 {# Navigation #}
-<div classs="container" style="max-width: 100%; padding: 0; margin:">
+<div classs="container" style="max-width: 100%; padding: 0;">
 <nav class="navbar navbar-expand-lg justify-content-center" style="background-color: #520b5e">
     <div class="container">
         <div class="collapse navbar-collapse" id="navbarNavLeft">
@@ -9,14 +10,14 @@
                 <li class="nav-item flex-fill text-center">
                     <a class="nav-link active" style="color: #dff04a"
                         href="/{{ LANGUAGE_CODE }}/">
-                        {{ _('Home') }}
+                        {% translate "Home" %}
                     </a>
                 </li>
                 {# Band #}
                 <li class="nav-item flex-fill text-center">
                     <a class="nav-link active" style="color: #dff04a"
                         href="/{{ LANGUAGE_CODE }}/band/">
-                        {{ _('Band') }}
+                        {% translate "Band" %}
                     </a>
                 </li>
                 {# Music #}
@@ -32,7 +33,8 @@
         <div class="justify-content-center text-center">
             <a class="navbar-brand mx-auto" style="color: #dff04a"
                 href="/{{ LANGUAGE_CODE }}/">
-                <img src="{% static 'img/logo.jpeg' %}" alt="MURASAKI" class="img-fluid" style="width: 150px">
+                <img src="{% static 'img/logo.jpeg' %}" alt="MURASAKI" class="img-fluid" style="width: 150px"> <br>
+                MURASAKI
             </a>
         </div>
         <div class="collapse navbar-collapse" id="navbarNavRight">
@@ -60,18 +62,10 @@
                 </li>
                 {# Language #}
                 <li class="nav-item flex-fill text-center">
-                    {% get_current_language as CURRENT_LANGUAGE %}
-                    {% get_available_languages as AVAILABLE_LANGUAGES %}
-                    {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
-                    {% for language in languages %}
-                        {% if language.code != CURRENT_LANGUAGE %}
-                            {% get_translated_url langauge.code as tr_url %}
-                            <a class="nav-link active" style="color: #dff04a; font-size: 0.8rem"
-                               href="/{{ language.code }}/" rel="alternate" hreflang="{{  language.code }}">
-                                {{ language.name_local }}
-                            </a>
-                        {% endif %}
-                    {% endfor %}
+                    <a class="nav-link active" style="color: #dff04a; font-size: 0.8rem"
+                       href="{{ switch_language.url }}" rel="alternate" hreflang="{{  switch_language.code }}">
+                        {{ switch_language.label }}
+                    </a>
                 </li>
             </ul>
         </div>
