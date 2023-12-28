@@ -88,18 +88,3 @@ class TourDate(TranslatableModel):
 
     def __str__(self):
         return self.title
-
-
-class MusicRelease(TranslatableModel):
-    """
-    Represents a music item.
-    """
-    translations = TranslatedFields(
-        title=models.CharField(_('title'), max_length=200),
-        description=RichTextUploadingField(_('description'), blank=True),
-        image=models.ImageField(_('image'), upload_to="music", blank=True),
-        live=models.BooleanField(_('live'), default=False),
-    )
-
-    def __str__(self):
-        return self.title
