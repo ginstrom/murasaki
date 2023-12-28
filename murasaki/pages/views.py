@@ -1,7 +1,9 @@
 """
 Site views
 """
+from django.core.paginator import Paginator
 from django.shortcuts import render
+
 from .models import Page, NewsItem, TourDate, MusicRelease
 
 
@@ -69,7 +71,9 @@ def news(request):
     Serves the site news page
     """
     context = get_page_context("news", language_code=request.LANGUAGE_CODE)
-    context['news_items'] = NewsItem.objects.translated(request.LANGUAGE_CODE).filter(translations__live=True).order_by("-translations__date")[:4]
+    page = request.GET.get("page", 1)
+    news_items = NewsItem.objects.translated(request.LANGUAGE_CODE).filter(translations__live=True).order_by("-translations__date")[:4]
+    context['news_items'] = Paginator(news_items, 10).get_page(page)
     return render(request, "pages/news.html", context)
 
 
