@@ -126,7 +126,7 @@ LANGUAGES = (
 )
 
 LOCALE_PATHS = (
-    BASE_DIR.parent / 'locale/',
+    BASE_DIR / 'locale/',
 )
 
 # parler settings

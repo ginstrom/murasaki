@@ -6,7 +6,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.utils import translation
 
-from pages.models import Page, NewsItem, TourDate, MusicRelease
+from pages.models import Page, NewsItem, TourDate
 
 class DefaultPageViewTests(TestCase):
     """
