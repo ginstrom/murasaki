@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-25 23:00-0600\n"
-"PO-Revision-Date: 2023-12-26 05:02+0000\n"
+"POT-Creation-Date: 2023-12-28 05:23-0600\n"
+"PO-Revision-Date: 2023-12-28 11:25+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -27,62 +27,96 @@ msgstr "英語"
 msgid "Japanese"
 msgstr "日本語"
 
-#: pages/models.py:24 pages/templates/nav_bar.html:12
+#: pages/models.py:35 pages/templates/nav_bar.html:13
 msgid "Home"
 msgstr "トップ"
 
-#: pages/models.py:25 pages/templates/nav_bar.html:19
+#: pages/models.py:36 pages/templates/nav_bar.html:20
 msgid "Band"
 msgstr "プロフィール"
 
-#: pages/models.py:26 pages/templates/nav_bar.html:26
+#: pages/models.py:37 pages/templates/nav_bar.html:27
 msgid "Music"
 msgstr "ミュージック"
 
-#: pages/models.py:27 pages/templates/nav_bar.html:44
+#: pages/models.py:38 pages/templates/nav_bar.html:46
 msgid "Tour"
 msgstr "演出"
 
-#: pages/models.py:28 pages/templates/nav_bar.html:51
+#: pages/models.py:39 pages/templates/nav_bar.html:53
+#: pages/templates/pages/home.html:34
 msgid "News"
 msgstr "ニュース"
 
-#: pages/models.py:29 pages/templates/nav_bar.html:58
+#: pages/models.py:40 pages/templates/nav_bar.html:60
 msgid "Shop"
 msgstr "ショップ"
 
-#: pages/models.py:32 pages/models.py:51 pages/models.py:67 pages/models.py:83
+#: pages/models.py:43 pages/models.py:68 pages/models.py:90
 msgid "title"
 msgstr "タイトル"
 
-#: pages/models.py:33
+#: pages/models.py:44
 msgid "intro"
 msgstr "紹介文"
 
-#: pages/models.py:35
+#: pages/models.py:46
 msgid "page type"
 msgstr "ページ名"
 
-#: pages/models.py:52
+#: pages/models.py:69
 msgid "body"
 msgstr "本文"
 
-#: pages/models.py:53 pages/models.py:71 pages/models.py:86
+#: pages/models.py:70 pages/models.py:94
 msgid "live"
 msgstr "表示"
 
-#: pages/models.py:54 pages/models.py:70
+#: pages/models.py:71 pages/models.py:93
 msgid "date"
 msgstr "日付"
 
-#: pages/models.py:55 pages/models.py:85
+#: pages/models.py:72
 msgid "image"
 msgstr "画像"
 
-#: pages/models.py:68
+#: pages/models.py:91
 msgid "venue"
 msgstr "会場"
 
-#: pages/models.py:69 pages/models.py:84
+#: pages/models.py:92
 msgid "description"
 msgstr "説明文"
+
+#: pages/templates/pages/home.html:55 pages/templates/pages/news.html:35
+msgid "READ MORE"
+msgstr "続きを読む"
+
+#: pages/templates/pages/home.html:64
+#: pages/templates/pages/news_detail.html:30
+msgid "VIEW ALL NEWS ARTICLES"
+msgstr "すべてのニュースを表示"
+
+#: pages/templates/pages/home.html:75 pages/templates/pages/tour.html:20
+msgid "Tour Dates"
+msgstr "演出スケジュール"
+
+#: pages/templates/pages/home.html:81 pages/templates/pages/tour.html:26
+#: pages/templates/pages/tour_detail.html:14
+msgid "Date"
+msgstr "日付"
+
+#: pages/templates/pages/home.html:82 pages/templates/pages/tour.html:27
+msgid "Event"
+msgstr "イベント"
+
+#: pages/templates/pages/home.html:83 pages/templates/pages/tour.html:28
+#: pages/templates/pages/tour_detail.html:17
+#| msgid "venue"
+msgid "Venue"
+msgstr "会場"
+
+#: pages/templates/pages/home.html:123
+#: pages/templates/pages/tour_detail.html:26
+msgid "VIEW ALL TOUR DATES"
+msgstr "せべての演出スケジュールを表示"
