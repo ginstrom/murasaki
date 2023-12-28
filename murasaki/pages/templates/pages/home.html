@@ -1,14 +1,129 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load static %}
+{% load parler_tags static %}
+
+{% block header %}
+    {# band image taking 100% of page width #}
+    <div class="alignfull" style="padding-top: 20px;">
+        <a href="/{{  LANGUAGE_CODE }}/tour/">
+         <img class="img-fluid" style="background-size: cover;
+                                       background-position: center;
+                                       background-repeat: no-repeat;
+                                       height: auto;
+                                       min-width: 100%;
+                                       width: -moz-available;"
+         src="{% static 'img/band.jpg' %}" alt="An image">
+      </a>
+    </div>
+{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>{{ page.title }}</h1>
+<div class="container" style="width: 100%">
+
     <div class="row">
         <div class="col-md-12">
             <p>{{ page.intro|safe }}</p>
         </div>
-    </div>  
+    </div>
+
+    {# news #}
+    <div class="bg-body-secondary w-100 p-1">
+    <div class="row">
+    {#  centered title row #}
+    <div class="col-md-12 center-block text-center">
+        <h1>{{ _('News') }}</h1>
+    </div>
+
+    {#  loop through news items, put in row #}
+    {% for news in news_items %}
+        <div class="col-md-3 col-sm-6 col-xs-12 center-block text-center">
+            <a href="{{ news.get_absolute_url }}">
+                <img
+                        alt="AltText"
+                        src="{{ news.image.url }}"
+                        class="img-fluid"
+                        style="height: 200px; width: auto;"
+                >
+            </a>
+            <div>{{ news.date }}</div>
+            <h4>{{ news.title }}</h4>
+            <div class="bg-dark text-white py-2 m-1">
+                <a
+                        href="{{ news.get_absolute_url }}"
+                        class="text-light text-decoration-none"
+                >
+                    {{ _('READ MORE') }}
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    <div class="row m-2 justify-content-center">
+        <div class="col-sm-auto py-2 bg-dark text-white center-block text-center w-25">
+            <a href="/{{  LANGUAGE_CODE }}/news/" class="text-light text-decoration-none">
+                {{ _('VIEW ALL NEWS ARTICLES') }}
+            </a>
+        </div>
+    </div>
+    </div>
+
+    {# tour dates #}
+    <div class="w-100 p-1 m-3">
+        <div class="row center-block">
+            {#  centered title row #}
+            <div class="col-md-12 center-block text-center">
+                <h1>{{ _('Tour Dates') }}</h1>
+            </div>
+        <div class="col-md-12 center-block">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">{{ _('Date') }}</th>
+                <th scope="col">{{ _('Event') }}</th>
+                <th scope="col">{{ _('Venue') }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {#  loop through news items, put in row #}
+            {% for tour in tour_dates %}
+                <tr>
+                    <td>
+                        <a
+                            href="{{ tour.get_absolute_url }}"
+                            class="text-decoration-none text-dark"
+                        >
+                            {{ tour.date }}
+                        </a>
+                    </td>
+                    <td>
+                        <a
+                                href="{{ tour.get_absolute_url }}"
+                                class="text-decoration-none text-dark"
+                        >
+                            {{ tour.title }}
+                        </a>
+                    </td>
+                    <td>
+                        <a
+                                href="{{ tour.get_absolute_url }}"
+                                class="text-decoration-none text-dark"
+                        >
+                            {{ tour.venue }}
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        </div>
+        <div class="row m-2 justify-content-center">
+            <div class="col-sm-auto py-2 bg-dark text-white center-block text-center w-25">
+                <a href="/{{  LANGUAGE_CODE }}/tour/" class="text-light text-decoration-none">
+                    {{ _('VIEW ALL TOUR DATES') }}
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock content %}
