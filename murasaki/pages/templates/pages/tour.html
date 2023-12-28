@@ -11,4 +11,119 @@
         </div>
     </div>  
 </div>
+
+{# tour dates #}
+<div class="w-100 p-1 m-3">
+    <div class="row center-block">
+        {#  centered title row #}
+        <div class="col-md-12 center-block text-center">
+            <h1>{{ _('Tour Dates') }}</h1>
+        </div>
+        <div class="col-md-12 center-block">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">{{ _('Date') }}</th>
+                    <th scope="col">{{ _('Event') }}</th>
+                    <th scope="col">{{ _('Venue') }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {#  loop through news items, put in row #}
+                {% for tour in tour_dates %}
+                <tr>
+                    <td>
+                        <a
+                                href="{{ tour.get_absolute_url }}"
+                                class="text-decoration-none text-dark"
+                        >
+                            {{ tour.date }}
+                        </a>
+                    </td>
+                    <td>
+                        <a
+                                href="{{ tour.get_absolute_url }}"
+                                class="text-decoration-none text-dark"
+                        >
+                            {{ tour.title }}
+                        </a>
+                    </td>
+                    <td>
+                        <a
+                                href="{{ tour.get_absolute_url }}"
+                                class="text-decoration-none text-dark"
+                        >
+                            {{ tour.venue }}
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    {# navigation #}
+    <div class="row">
+        <nav aria-label="Page navigation" style="margin-top: 20px;">
+            <ul class="pagination">
+                {% if tour_dates.has_previous %}
+                <li class="page-item">
+                    <a
+                            class="page-link"
+                            href="{{ page.get_absolute_url }}?page={{ tour_dates.previous_page_number }}"
+                            aria-label="Previous"
+                    >
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a
+                            class="page-link"
+                            href="{{ page.get_absolute_url }}?page={{ tour_dates.previous_page_number }}"
+                    >
+                        <span aria-hidden="true">{{ tour_dates.previous_page_number }}</span>
+                    </a>
+                </li>
+                {% else %}
+                <li class="page-item disabled" aria-disabled="true">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&laquo;</a>
+                </li>
+                {% endif %}
+
+                <li class="page-item active" aria-current="page">
+                    <a
+                            class="page-link"
+                            href="{{ page.get_absolute_url }}?page={{ tour_dates.number }}"
+                    >
+                        <span aria-hidden="true">{{ tour_dates.number }}</span>
+                    </a>
+                </li>
+
+                {% if tour_dates.has_next %}
+                <li class="page-item">
+                    <a
+                            class="page-link"
+                            href="{{ page.get_absolute_url }}?page={{ tour_dates.next_page_number }}"
+                    >
+                        <span aria-hidden="true">{{ tour_dates.next_page_number }}</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a
+                            class="page-link"
+                            href="{{ page.get_absolute_url }}?page={{ tour_dates.next_page_number }}"
+                            aria-label="Next"
+                    >
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                {% else %}
+                <li class="page-item disabled" aria-disabled="true">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&raquo;</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
 {% endblock content %}

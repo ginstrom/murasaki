@@ -4,7 +4,7 @@ Site views
 from django.core.paginator import Paginator
 from django.shortcuts import render
 
-from .models import Page, NewsItem, TourDate, MusicRelease
+from .models import Page, NewsItem, TourDate
 
 
 def get_page_or_default(page_type: str, language_code: str = 'en'):
@@ -72,7 +72,7 @@ def news(request):
     """
     context = get_page_context("news", language_code=request.LANGUAGE_CODE)
     page = request.GET.get("page", 1)
-    news_items = NewsItem.objects.translated(request.LANGUAGE_CODE).filter(translations__live=True).order_by("-translations__date")[:4]
+    news_items = NewsItem.objects.translated(request.LANGUAGE_CODE).filter(translations__live=True).order_by("-translations__date")
     context['news_items'] = Paginator(news_items, 10).get_page(page)
     return render(request, "pages/news.html", context)
 
@@ -82,6 +82,9 @@ def tour(request):
     Serves the site tour page
     """
     context = get_page_context("tour", language_code=request.LANGUAGE_CODE)
+    page = request.GET.get("page", 1)
+    tour_dates = TourDate.objects.translated(request.LANGUAGE_CODE).filter(translations__live=True).order_by("-translations__date")
+    context['tour_dates'] = Paginator(tour_dates, 10).get_page(page)
     return render(request, "pages/tour.html", context)
 
 
