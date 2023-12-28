@@ -136,3 +136,5 @@ dmypy.json
 
 # files generated in collectstatic
 murasaki/static/*
+# uploaded files
+murasaki/murasaki/media/*
