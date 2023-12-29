@@ -4,5 +4,5 @@ set -o errexit
 
 poetry install
 
-python manage.py collectstatic --no-input
+DJANGO_SETTINGS_MODULE=murasaki.settings.dev manage.py collectstatic --no-input
 python manage.py migrate --settings=murasaki.settings.prod
