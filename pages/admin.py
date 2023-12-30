@@ -10,10 +10,12 @@ class PageAdmin(TranslatableAdmin):
 
 class TourDateAdmin(TranslatableAdmin):
     list_display = ('title', 'date', 'venue', 'live')
+    list_filter = ('translations__live', 'translations__date')
 
 
 class NewsItemAdmin(TranslatableAdmin):
     list_display = ('title', 'date', 'live')
+    list_filter = ('translations__live', 'translations__date')
 
 
 admin.site.register(Page, PageAdmin)
