@@ -2,6 +2,10 @@
 {% load i18n %}
 {% load parler_tags static %}
 
+{% block title_suffix %}
+:: {{ page.title }}
+{% endblock %}
+
 {% block header %}
     {# band image taking 100% of page width #}
     <div class="alignfull" style="padding-top: 20px;">
