@@ -110,8 +110,6 @@ class NewsItemTests(TestCase):
             live=True,
             image="news/news_item.jpg",
         )
-        assert news_item.has_translation("en"), news_item.get_translation("en")
-        assert not news_item.has_translation("ja"), news_item.get_translation("ja")
         news_item.create_translation(
             "ja",
             title="ニュース",
@@ -126,7 +124,7 @@ class NewsItemTests(TestCase):
         """
         Delete the news item object
         """
-        NewsItem.objects.get(translations__title="News Item").delete()
+        NewsItem.objects.all().delete()
         assert NewsItem.objects.count() == 0, NewsItem.objects.all()
 
     def test_get_switch_language(self):

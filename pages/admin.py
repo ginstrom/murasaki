@@ -12,6 +12,21 @@ class TourDateAdmin(TranslatableAdmin):
     list_display = ('title', 'date', 'venue', 'live')
     list_filter = ('translations__live', 'translations__date')
 
+    def save_model(self, request, obj, form, change):
+        """
+        Override the save_model method to create translations for the tour date
+        """
+        super().save_model(request, obj, form, change)
+        if not obj.has_translation(obj.get_switch_language()):
+            obj.create_translation(
+                obj.get_switch_language(),
+                title=obj.title,
+                venue=obj.venue,
+                description=obj.description,
+                date=obj.date,
+                live=obj.live,
+            )
+
 
 class NewsItemAdmin(TranslatableAdmin):
     list_display = ('title', 'date', 'live')
@@ -22,10 +37,7 @@ class NewsItemAdmin(TranslatableAdmin):
         Override the save_model method to create translations for the news item
         """
         super().save_model(request, obj, form, change)
-        print('current language', obj.get_current_language())
-        print('switch language', obj.get_switch_language())
         if not obj.has_translation(obj.get_switch_language()):
-            print ('creating translation', obj.get_switch_language())
             obj.create_translation(
                 obj.get_switch_language(),
                 title=obj.title,
