@@ -110,12 +110,16 @@ class NewsItemTests(TestCase):
             live=True,
             image="news/news_item.jpg",
         )
-        news_item.set_current_language("ja")
-        news_item.title = "ニュース"
-        news_item.body = "これはニュースです。"
-        news_item.live = True
-        news_item.image = "news/news_item.jpg"
-        news_item.save()
+        assert news_item.has_translation("en"), news_item.get_translation("en")
+        assert not news_item.has_translation("ja"), news_item.get_translation("ja")
+        news_item.create_translation(
+            "ja",
+            title="ニュース",
+            body="これはニュースです。",
+            live=True,
+            image="news/news_item.jpg"
+        )
+        assert news_item.has_translation("ja"), news_item.get_translation("ja")
 
     @classmethod
     def tearDownClass(cls):
@@ -124,6 +128,18 @@ class NewsItemTests(TestCase):
         """
         NewsItem.objects.get(translations__title="News Item").delete()
         assert NewsItem.objects.count() == 0, NewsItem.objects.all()
+
+    def test_get_switch_language(self):
+        """
+        Test that the get_switch_language method works
+        """
+        news_item = NewsItem.objects.get(translations__title="News Item")
+        self.assertEqual(news_item.get_current_language(), "en")
+        self.assertEqual(news_item.get_switch_language(), "ja")
+        news_item.set_current_language("en")
+        self.assertEqual(news_item.get_switch_language(), "ja")
+        news_item.set_current_language("ja")
+        self.assertEqual(news_item.get_switch_language(), "en")
 
     def test_str_en(self):
         """
@@ -192,6 +208,48 @@ class NewsItemTests(TestCase):
         pk = news_item.pk
         self.assertEqual(news_item.get_absolute_url_for("en"), "/en/news/{}/".format(pk))
         self.assertEqual(news_item.get_absolute_url_for("ja"), "/ja/news/{}/".format(pk))
+
+
+class NewsItemBilingualTests(TestCase):
+    """
+    Test bilingual handling of news items
+    """
+    def tearDown(self):
+        """
+        Delete the news item object
+        """
+        NewsItem.objects.all().delete()
+        assert NewsItem.objects.count() == 0, NewsItem.objects.all()
+
+    def test_create_english_item_only(self):
+        """
+        When we create an English-language news item, no Japanese news item should be created
+        """
+        news_item = NewsItem.objects.language("en").create(
+            title="News Item",
+            body="This is a news item.",
+            live=True,
+            image="news/news_item.jpg",
+        )
+        japanese_item = NewsItem.objects.translated("ja").filter(pk=news_item.pk)
+        assert not japanese_item, japanese_item
+        english_item = NewsItem.objects.translated("en").get(pk=news_item.pk)
+        assert english_item == news_item, english_item
+
+    def test_create_japanese_item_only(self):
+        """
+        When we create a Japanese-language news item, no English news item should be created
+        """
+        news_item = NewsItem.objects.language("ja").create(
+            title="ニュース",
+            body="これはニュースです。",
+            live=True,
+            image="news/news_item.jpg",
+        )
+        english_item = NewsItem.objects.translated("en").filter(pk=news_item.pk)
+        assert not english_item, english_item
+        japanese_item = NewsItem.objects.translated("ja").get(pk=news_item.pk)
+        assert japanese_item == news_item, japanese_item
 
 
 class TourDateTests(TestCase):

@@ -17,6 +17,15 @@ class UrlSwitcher:
         with translation.override(language_code):
             return self.get_absolute_url()
 
+    def get_switch_language(self):
+        """
+        If the current language is English, return Japanese, and vice versa.
+        """
+        if self.get_current_language() == "en":
+            return "ja"
+        else:
+            return "en"
+
 
 class Page(TranslatableModel, UrlSwitcher):
     """
