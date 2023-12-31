@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-28 05:23-0600\n"
-"PO-Revision-Date: 2023-12-28 11:25+0000\n"
+"POT-Creation-Date: 2023-12-31 11:10+0000\n"
+"PO-Revision-Date: 2023-12-31 11:11+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,11 +19,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
-#: murasaki/settings/base.py:124
+#: murasaki/settings/base.py:128
 msgid "English"
 msgstr "英語"
 
-#: murasaki/settings/base.py:125
+#: murasaki/settings/base.py:129
 msgid "Japanese"
 msgstr "日本語"
 
@@ -41,10 +41,10 @@ msgstr "ミュージック"
 
 #: pages/models.py:38 pages/templates/nav_bar.html:46
 msgid "Tour"
-msgstr "演出"
+msgstr " ツアー"
 
 #: pages/models.py:39 pages/templates/nav_bar.html:53
-#: pages/templates/pages/home.html:34
+#: pages/templates/pages/home.html:38
 msgid "News"
 msgstr "ニュース"
 
@@ -88,35 +88,34 @@ msgstr "会場"
 msgid "description"
 msgstr "説明文"
 
-#: pages/templates/pages/home.html:55 pages/templates/pages/news.html:35
+#: pages/templates/pages/home.html:59 pages/templates/pages/news.html:35
 msgid "READ MORE"
 msgstr "続きを読む"
 
-#: pages/templates/pages/home.html:64
+#: pages/templates/pages/home.html:68
 #: pages/templates/pages/news_detail.html:30
 msgid "VIEW ALL NEWS ARTICLES"
 msgstr "すべてのニュースを表示"
 
-#: pages/templates/pages/home.html:75 pages/templates/pages/tour.html:20
+#: pages/templates/pages/home.html:79 pages/templates/pages/tour.html:19
 msgid "Tour Dates"
 msgstr "演出スケジュール"
 
-#: pages/templates/pages/home.html:81 pages/templates/pages/tour.html:26
+#: pages/templates/pages/home.html:85 pages/templates/pages/tour.html:25
 #: pages/templates/pages/tour_detail.html:14
 msgid "Date"
 msgstr "日付"
 
-#: pages/templates/pages/home.html:82 pages/templates/pages/tour.html:27
+#: pages/templates/pages/home.html:86 pages/templates/pages/tour.html:26
 msgid "Event"
 msgstr "イベント"
 
-#: pages/templates/pages/home.html:83 pages/templates/pages/tour.html:28
+#: pages/templates/pages/home.html:87 pages/templates/pages/tour.html:27
 #: pages/templates/pages/tour_detail.html:17
-#| msgid "venue"
 msgid "Venue"
 msgstr "会場"
 
-#: pages/templates/pages/home.html:123
+#: pages/templates/pages/home.html:127
 #: pages/templates/pages/tour_detail.html:26
 msgid "VIEW ALL TOUR DATES"
 msgstr "せべての演出スケジュールを表示"
