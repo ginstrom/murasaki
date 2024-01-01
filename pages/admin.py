@@ -1,5 +1,6 @@
 from django.contrib import admin
 from parler.admin import TranslatableAdmin
+from imagekit.admin import AdminThumbnail
 
 from .models import Page, NewsItem, TourDate
 
@@ -29,8 +30,12 @@ class TourDateAdmin(TranslatableAdmin):
 
 
 class NewsItemAdmin(TranslatableAdmin):
-    list_display = ('title', 'date', 'live')
+
+    thumbnail = AdminThumbnail(image_field='image')
+
+    list_display = ('title', 'date', 'live', 'thumbnail')
     list_filter = ('translations__live', 'translations__date')
+    readonly_fields = ('thumbnail',)
 
     def save_model(self, request, obj, form, change):
         """
