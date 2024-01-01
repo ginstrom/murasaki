@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rosetta',            # for translations
+    'rosetta',            # po file translation manager
     'parler',             # translatable models
     "ckeditor",           # rich text editor
     "ckeditor_uploader",  # file upload for rich text editor

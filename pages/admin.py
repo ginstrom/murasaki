@@ -1,6 +1,7 @@
 from django.contrib import admin
+from django.utils.html import mark_safe
+from django.utils.translation import gettext_lazy as _
 from parler.admin import TranslatableAdmin
-from imagekit.admin import AdminThumbnail
 
 from .models import Page, NewsItem, TourDate
 
@@ -31,7 +32,19 @@ class TourDateAdmin(TranslatableAdmin):
 
 class NewsItemAdmin(TranslatableAdmin):
 
-    thumbnail = AdminThumbnail(image_field='image')
+    def thumbnail(self, obj):
+        """
+        Return a thumbnail of the image
+        """
+        if obj.image:
+            try:
+                width = min(obj.image.width, 100)
+                height = min(obj.image.height, 100)
+                return mark_safe(f'<img src="{obj.image.url}" width="{width}" height="{height}" />')
+            except Exception:
+                pass
+        return '-'
+    thumbnail.short_description = _('Thumbnail')
 
     list_display = ('title', 'date', 'live', 'thumbnail')
     list_filter = ('translations__live', 'translations__date')
