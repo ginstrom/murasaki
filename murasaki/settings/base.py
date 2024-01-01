@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'parler',             # translatable models
     "ckeditor",           # rich text editor
     "ckeditor_uploader",  # file upload for rich text editor
+    "imagekit",           # image processing
+    "whitenoise",         # static file serving
 ]
 
 MIDDLEWARE = [
