@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-02 02:11+0000\n"
+"POT-Creation-Date: 2024-01-02 02:21+0000\n"
 "PO-Revision-Date: 2023-12-31 11:11+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -122,3 +122,15 @@ msgstr "会場"
 #: pages/templates/pages/tour_detail.html:26
 msgid "VIEW ALL TOUR DATES"
 msgstr "せべての演出スケジュールを表示"
+
+#: templates/nav_bar.html:72
+msgid "Media"
+msgstr ""
+
+#: templates/nav_bar.html:81
+msgid "Photos"
+msgstr ""
+
+#: templates/nav_bar.html:88
+msgid "Videos"
+msgstr ""

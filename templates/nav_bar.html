@@ -3,7 +3,7 @@
 {# Navigation #}
 <div classs="container" style="max-width: 100%; padding: 0;">
 <nav class="navbar navbar-expand-lg justify-content-center" style="background-color: #520b5e">
-    <div class="container">
+    <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarNavLeft">
             <ul class="navbar-nav flex-grow-1">
                 {# Home #}
@@ -27,6 +27,13 @@
                         {{ _('Music') }}
                     </a>
                 </li>
+                {# Tour #}
+                <li class="nav-item flex-fill text-center">
+                    <a class="nav-link active" style="color: #dff04a"
+                       href="/{{ LANGUAGE_CODE }}/tour/">
+                        {{ _('Tour') }}
+                    </a>
+                </li>
             </ul>
         </div>
         {# BRAND #}
@@ -39,13 +46,6 @@
         </div>
         <div class="collapse navbar-collapse" id="navbarNavRight">
             <ul class="navbar-nav flex-grow-1">
-                {# Tour #}
-                <li class="nav-item flex-fill text-center">
-                    <a class="nav-link active" style="color: #dff04a"
-                        href="/{{ LANGUAGE_CODE }}/tour/">
-                        {{ _('Tour') }}
-                    </a>
-                </li>
                 {# News #}
                 <li class="nav-item flex-fill text-center">
                     <a class="nav-link active" style="color: #dff04a"
@@ -59,6 +59,35 @@
                         href="/{{ LANGUAGE_CODE }}/shop/">
                         {{ _('Shop') }}
                     </a>
+                </li>
+                {# MEDIA #}
+                <li class="nav-item dropdown">
+                    <a
+                            class="nav-link dropdown-toggle active"
+                            href="#" role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            style="color: #dff04a"
+                    >
+                        {{ _('Media') }}
+                    </a>
+                    {# Links to photos and videos #}
+                    <ul class="dropdown-menu" style="background-color: #520b5e">
+                        <li>
+                            <a
+                                class="dropdown-item"
+                                href="#"
+                                style="color: #dff04a"
+                            >{{ _('Photos') }}</a>
+                        </li>
+                        <li>
+                            <a
+                                class="dropdown-item"
+                                href="#"
+                                style="color: #dff04a"
+                            >{{ _('Videos') }}</a>
+                        </li>
+                    </ul>
                 </li>
                 {# Language #}
                 <li class="nav-item flex-fill text-center">
