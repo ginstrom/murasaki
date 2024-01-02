@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "ckeditor_uploader",  # file upload for rich text editor
     "imagekit",           # image processing
     "whitenoise",         # static file serving
+    'embed_video',        # video embedding
 ]
 
 MIDDLEWARE = [
@@ -81,6 +82,12 @@ TEMPLATES = [
         },
     },
 ]
+
+# to detect HTTP/S you must use the `request` context processor
+# https://docs.djangoproject.com/en/4.2/ref/templates/api/#django-template-context-processors-request
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.template.context_processors.request',
+)
 
 WSGI_APPLICATION = 'murasaki.wsgi.application'
 
