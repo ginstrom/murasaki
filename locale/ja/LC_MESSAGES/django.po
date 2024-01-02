@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-01 05:00+0000\n"
+"POT-Creation-Date: 2024-01-02 02:11+0000\n"
 "PO-Revision-Date: 2023-12-31 11:11+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,28 +27,32 @@ msgstr "英語"
 msgid "Japanese"
 msgstr "日本語"
 
-#: pages/models.py:44 pages/templates/nav_bar.html:13
+#: pages/admin.py:47
+msgid "Thumbnail"
+msgstr ""
+
+#: pages/models.py:44 templates/nav_bar.html:13
 msgid "Home"
 msgstr "トップ"
 
-#: pages/models.py:45 pages/templates/nav_bar.html:20
+#: pages/models.py:45 templates/nav_bar.html:20
 msgid "Band"
 msgstr "プロフィール"
 
-#: pages/models.py:46 pages/templates/nav_bar.html:27
+#: pages/models.py:46 templates/nav_bar.html:27
 msgid "Music"
 msgstr "ミュージック"
 
-#: pages/models.py:47 pages/templates/nav_bar.html:46
+#: pages/models.py:47 templates/nav_bar.html:46
 msgid "Tour"
 msgstr " ツアー"
 
-#: pages/models.py:48 pages/templates/nav_bar.html:53
-#: pages/templates/pages/home.html:38
+#: pages/models.py:48 pages/templates/pages/home.html:38
+#: templates/nav_bar.html:53
 msgid "News"
 msgstr "ニュース"
 
-#: pages/models.py:49 pages/templates/nav_bar.html:60
+#: pages/models.py:49 templates/nav_bar.html:60
 msgid "Shop"
 msgstr "ショップ"
 
