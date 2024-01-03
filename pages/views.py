@@ -6,15 +6,19 @@ from django.shortcuts import render
 
 from .models import Page, NewsItem, TourDate
 
+from common.utils import get_switch_language_url
+
 
 def get_page_or_default(page_type: str, language_code: str = 'en'):
     """
     Gets the Page object with the specified page type,
     or creates a default object
     """
-    page = Page.objects.language(language_code).filter(translations__page_type=page_type).first()
+    page = Page.objects.translated(page_type=page_type).first()
     if page:
         return page
+
+    # Create a default page
     page = Page()
     page.set_current_language('en')
     for label, name in Page.PageType.choices:
@@ -22,25 +26,14 @@ def get_page_or_default(page_type: str, language_code: str = 'en'):
             page.title = name
             page.page_type = label
             page.save()
+            page.create_translation(
+                'ja',
+                title=name,
+                page_type=label,
+                live=True,
+            )
             page.set_current_language(language_code)
             return page
-
-
-def get_switch_language_url(page, language_code):
-    """
-    Gets the switch language URL for the page
-    """
-    if language_code == 'en':
-        return {
-            'url': page.get_absolute_url_for('ja'),
-            'label': '日本語',
-            'code': 'ja',
-        }
-    return {
-        'url': page.get_absolute_url_for('en'),
-        'label': 'English',
-        'code': 'en',
-    }
 
 
 def get_page_context(page_type, language_code):
@@ -48,9 +41,10 @@ def get_page_context(page_type, language_code):
     Creates the page context dict from the page type and language code.
     """
     page = get_page_or_default(page_type, language_code=language_code)
+    url_getter = page.get_absolute_url_for
     return {
         'page': page,
-        'switch_language': get_switch_language_url(page, language_code),
+        'switch_language': get_switch_language_url(url_getter, language_code),
     }
 
 
@@ -87,7 +81,8 @@ def news_detail(request, pk):
     context = get_page_context("news", language_code=language)
     news_item = NewsItem.objects.get(pk=pk)
     context['news_item'] = news_item
-    context['switch_language'] = get_switch_language_url(news_item, language_code=language)
+    url_getter = news_item.get_absolute_url_for
+    context['switch_language'] = get_switch_language_url(url_getter, language_code=language)
     return render(request, "pages/news_detail.html", context)
 
 
@@ -111,7 +106,8 @@ def tour_detail(request, pk):
     context = get_page_context("tour", language_code=language)
     tour_date = TourDate.objects.get(pk=pk)
     context['tour_date'] = tour_date
-    context['switch_language'] = get_switch_language_url(tour_date, language_code=language)
+    url_getter = tour_date.get_absolute_url_for
+    context['switch_language'] = get_switch_language_url(url_getter, language_code=language)
     return render(request, "pages/tour_detail.html", context)
 
 

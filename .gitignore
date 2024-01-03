@@ -138,3 +138,4 @@ dmypy.json
 murasaki/static/*
 # uploaded files
 murasaki/murasaki/media/*
+media/gallery/photos/*

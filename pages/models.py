@@ -4,27 +4,10 @@ Models for the pages app.
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.urls import reverse
-from django.utils import translation
 from django.utils.translation import gettext_lazy as _
 from parler.models import TranslatableModel, TranslatedFields
 
-
-class UrlSwitcher:
-    def get_absolute_url_for(self, language_code):
-        """
-        Returns the URL for this page in the specified language.
-        """
-        with translation.override(language_code):
-            return self.get_absolute_url()
-
-    def get_switch_language(self):
-        """
-        If the current language is English, return Japanese, and vice versa.
-        """
-        if self.get_current_language() == "en":
-            return "ja"
-        else:
-            return "en"
+from common.utils import UrlSwitcher
 
 
 class Page(TranslatableModel, UrlSwitcher):
@@ -77,8 +60,8 @@ class NewsItem(TranslatableModel, UrlSwitcher):
         title=models.CharField(_('title'), max_length=300),
         body=RichTextUploadingField(_('body'), blank=True),
         live=models.BooleanField(_('live'), default=False),
-        date=models.DateTimeField(_('date'), auto_now_add=True),
         image=models.ImageField(_('image'), upload_to="news", blank=True),
+        date=models.DateTimeField(_('date'), auto_now_add=True),
     )
 
     def get_absolute_url(self):

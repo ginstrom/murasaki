@@ -372,6 +372,22 @@ Django = ">=3.2"
 django-js-asset = ">=2.0"
 
 [[package]]
+name = "django-embed-video"
+version = "1.4.9"
+description = "Django app for easy embedding YouTube and Vimeo videos and music from SoundCloud."
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-embed-video-1.4.9.tar.gz", hash = "sha256:c50c76f2c3b7c464efb281a47d579689dca4f681b8efefec1c8ae29d20d6df99"},
+    {file = "django_embed_video-1.4.9-py3-none-any.whl", hash = "sha256:a82097e160039796c9da08cef16b1aef23b319844839131d681174d019429fa5"},
+]
+
+[package.dependencies]
+Django = ">=3.2"
+requests = ">=2.19"
+
+[[package]]
 name = "django-imagekit"
 version = "5.0.0"
 description = "Automated image processing for Django models."
@@ -935,4 +951,4 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "f4d45b2a00f86584206c26490e897fc0375cb528da11975af71b0e4673c20ff5"
+content-hash = "4e0d0b9c764eee851d8e204cf52a3f7d4cad796b4872c5991940ac33ece6adc1"

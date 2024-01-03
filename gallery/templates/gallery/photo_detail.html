@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title_suffix %}
+:: {{ photo.title }}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>{{ photo.title }}</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <p>{{ photo.date }}</p>
+        </div>
+        <div class="col-md-12">
+            <img
+                    alt="{{ photo.title }}"
+                    src="{{ photo.image.url }}"
+                    class="img-fluid"
+            >
+        </div>
+        <div class="col-md-12">
+            <p>{{ photo.description|safe }}</p>
+        </div>
+    </div>
+    <div class="row m-2 justify-content-center">
+        <div class="col-sm-auto py-2 bg-dark text-white center-block text-center w-25">
+            <a href="/{{  LANGUAGE_CODE }}/gallery/photos/" class="text-light text-decoration-none">
+                {{ _('VIEW ALL PHOTOS') }}
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

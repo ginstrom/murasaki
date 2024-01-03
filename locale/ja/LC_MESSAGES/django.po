@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-01 05:00+0000\n"
-"PO-Revision-Date: 2023-12-31 11:11+0000\n"
+"POT-Creation-Date: 2024-01-03 11:07+0000\n"
+"PO-Revision-Date: 2024-01-03 08:47+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,74 +19,105 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
-#: murasaki/settings/base.py:130
-msgid "English"
-msgstr "英語"
+#: gallery/admin.py:24 pages/admin.py:47
+msgid "Thumbnail"
+msgstr "サムネイル"
 
-#: murasaki/settings/base.py:131
-msgid "Japanese"
-msgstr "日本語"
-
-#: pages/models.py:44 pages/templates/nav_bar.html:13
-msgid "Home"
-msgstr "トップ"
-
-#: pages/models.py:45 pages/templates/nav_bar.html:20
-msgid "Band"
-msgstr "プロフィール"
-
-#: pages/models.py:46 pages/templates/nav_bar.html:27
-msgid "Music"
-msgstr "ミュージック"
-
-#: pages/models.py:47 pages/templates/nav_bar.html:46
-msgid "Tour"
-msgstr " ツアー"
-
-#: pages/models.py:48 pages/templates/nav_bar.html:53
-#: pages/templates/pages/home.html:38
-msgid "News"
-msgstr "ニュース"
-
-#: pages/models.py:49 pages/templates/nav_bar.html:60
-msgid "Shop"
-msgstr "ショップ"
-
-#: pages/models.py:52 pages/models.py:77 pages/models.py:99
+#: gallery/models.py:25 gallery/models.py:47 pages/models.py:35
+#: pages/models.py:60 pages/models.py:82
 msgid "title"
 msgstr "タイトル"
 
-#: pages/models.py:53
-msgid "intro"
-msgstr "紹介文"
+#: gallery/models.py:26 gallery/models.py:48 pages/models.py:84
+msgid "description"
+msgstr "説明文"
 
-#: pages/models.py:55
-msgid "page type"
-msgstr "ページ名"
-
-#: pages/models.py:78
-msgid "body"
-msgstr "本文"
-
-#: pages/models.py:79 pages/models.py:103
-msgid "live"
-msgstr "表示"
-
-#: pages/models.py:80 pages/models.py:102
-msgid "date"
-msgstr "日付"
-
-#: pages/models.py:81
+#: gallery/models.py:27 pages/models.py:63
 msgid "image"
 msgstr "画像"
 
-#: pages/models.py:100
+#: gallery/models.py:28 gallery/models.py:50 pages/models.py:62
+#: pages/models.py:86
+msgid "live"
+msgstr "表示"
+
+#: gallery/models.py:29 gallery/models.py:51 pages/models.py:64
+#: pages/models.py:85
+msgid "date"
+msgstr "日付"
+
+#: gallery/models.py:49
+msgid "video"
+msgstr "動画"
+
+#: gallery/templates/gallery/photo_detail.html:30
+msgid "VIEW ALL PHOTOS"
+msgstr "せべての写真を表示"
+
+#: gallery/templates/gallery/photos.html:11 templates/nav_bar.html:81
+msgid "Photos"
+msgstr "写真"
+
+#: gallery/templates/gallery/video_detail.html:27
+msgid "VIEW ALL VIDEOS"
+msgstr "せべての動画を表示"
+
+#: gallery/templates/gallery/videos.html:11 templates/nav_bar.html:88
+msgid "Videos"
+msgstr "動画"
+
+#: gallery/templates/gallery/videos.html:24
+msgid "DETAILS"
+msgstr "詳細"
+
+#: murasaki/settings/base.py:138
+msgid "English"
+msgstr "英語"
+
+#: murasaki/settings/base.py:139
+msgid "Japanese"
+msgstr "日本語"
+
+#: pages/models.py:27 templates/nav_bar.html:13
+msgid "Home"
+msgstr "トップ"
+
+#: pages/models.py:28 templates/nav_bar.html:20
+msgid "Band"
+msgstr "プロフィール"
+
+#: pages/models.py:29 templates/nav_bar.html:27
+msgid "Music"
+msgstr "ミュージック"
+
+#: pages/models.py:30 templates/nav_bar.html:34
+msgid "Tour"
+msgstr " ツアー"
+
+#: pages/models.py:31 pages/templates/pages/home.html:38
+#: templates/nav_bar.html:53
+msgid "News"
+msgstr "ニュース"
+
+#: pages/models.py:32 templates/nav_bar.html:60
+msgid "Shop"
+msgstr "ショップ"
+
+#: pages/models.py:36
+msgid "intro"
+msgstr "紹介文"
+
+#: pages/models.py:38
+msgid "page type"
+msgstr "ページ名"
+
+#: pages/models.py:61
+msgid "body"
+msgstr "本文"
+
+#: pages/models.py:83
 msgid "venue"
 msgstr "会場"
-
-#: pages/models.py:101
-msgid "description"
-msgstr "説明文"
 
 #: pages/templates/pages/home.html:59 pages/templates/pages/news.html:35
 msgid "READ MORE"
@@ -118,3 +149,7 @@ msgstr "会場"
 #: pages/templates/pages/tour_detail.html:26
 msgid "VIEW ALL TOUR DATES"
 msgstr "せべての演出スケジュールを表示"
+
+#: templates/nav_bar.html:72
+msgid "Media"
+msgstr "メディア"

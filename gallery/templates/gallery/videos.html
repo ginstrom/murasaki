@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load embed_video_tags %}
+
+{% block content %}
+<div class="container">
+    {# display videos in 2x4 grid #}
+    <div class="row">
+        <div class="col-md-12 center-block text-center">
+            <h1>{{ _('Videos') }}</h1>
+        </div>
+        {% for video in videos %}
+        <div class="col-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 center-block" style="margin-bottom: 10px;">
+            {% video video.video 'small' %}
+            <div>
+                {{ video.title }}
+            </div>
+            <div class="py-2 bg-dark text-white center-block text-center w-25">
+                <a
+                        href="{{ video.get_absolute_url }}"
+                        class="text-light text-decoration-none"
+                >
+                    {{ _('DETAILS') }}
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{# navigation #}
+<div class="container">
+<div class="row">
+    <nav aria-label="Page navigation" style="margin-top: 20px;">
+        <ul class="pagination">
+            {% if videos.has_previous %}
+            <li class="page-item">
+                <a
+                        class="page-link"
+                        href="{{ absolute_url }}?page={{ videos.previous_page_number }}"
+                        aria-label="Previous"
+                >
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a
+                        class="page-link"
+                        href="{{ absolute_url }}?page={{ videos.previous_page_number }}"
+                >
+                    <span aria-hidden="true">{{ videos.previous_page_number }}</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled" aria-disabled="true">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&laquo;</a>
+            </li>
+            {% endif %}
+
+            <li class="page-item active" aria-current="page">
+                <a
+                        class="page-link"
+                        href="{{ absolute_url }}?page={{ videos.number }}"
+                >
+                    <span aria-hidden="true">{{ videos.number }}</span>
+                </a>
+            </li>
+
+            {% if videos.has_next %}
+            <li class="page-item">
+                <a
+                        class="page-link"
+                        href="{{ absolute_url }}?page={{ videos.next_page_number }}"
+                >
+                    <span aria-hidden="true">{{ videos.next_page_number }}</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a
+                        class="page-link"
+                        href="{{ absolute_url }}?page={{ videos.next_page_number }}"
+                        aria-label="Next"
+                >
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled" aria-disabled="true">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&raquo;</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+</div>
+
+{% endblock content %}

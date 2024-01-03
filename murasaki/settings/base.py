@@ -36,7 +36,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'pages.apps.PageConfig',  # our app
+    'pages.apps.PageConfig',       # our app main pages
+    'gallery.apps.GalleryConfig',  # our app gallery
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
     "ckeditor_uploader",  # file upload for rich text editor
     "imagekit",           # image processing
     "whitenoise",         # static file serving
+    'embed_video',        # video embedding
 ]
 
 MIDDLEWARE = [
@@ -68,7 +70,7 @@ ROOT_URLCONF = 'murasaki.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,6 +82,12 @@ TEMPLATES = [
         },
     },
 ]
+
+# to detect HTTP/S you must use the `request` context processor
+# https://docs.djangoproject.com/en/4.2/ref/templates/api/#django-template-context-processors-request
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.template.context_processors.request',
+)
 
 WSGI_APPLICATION = 'murasaki.wsgi.application'
 
