@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-03 11:07+0000\n"
-"PO-Revision-Date: 2024-01-03 08:47+0000\n"
+"PO-Revision-Date: 2024-01-03 15:09+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -123,13 +123,14 @@ msgstr "会場"
 msgid "READ MORE"
 msgstr "続きを読む"
 
-#: pages/templates/pages/home.html:68 pages/templates/pages/news_detail.html:30
+#: pages/templates/pages/home.html:68
+#: pages/templates/pages/news_detail.html:30
 msgid "VIEW ALL NEWS ARTICLES"
 msgstr "すべてのニュースを表示"
 
 #: pages/templates/pages/home.html:79 pages/templates/pages/tour.html:19
 msgid "Tour Dates"
-msgstr "演出スケジュール"
+msgstr "スケジュール"
 
 #: pages/templates/pages/home.html:85 pages/templates/pages/tour.html:25
 #: pages/templates/pages/tour_detail.html:14
@@ -148,7 +149,7 @@ msgstr "会場"
 #: pages/templates/pages/home.html:127
 #: pages/templates/pages/tour_detail.html:26
 msgid "VIEW ALL TOUR DATES"
-msgstr "せべての演出スケジュールを表示"
+msgstr "せべてのスケジュールを表示"
 
 #: templates/nav_bar.html:72
 msgid "Media"
