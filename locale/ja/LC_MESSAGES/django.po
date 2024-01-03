@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-02 15:31+0000\n"
-"PO-Revision-Date: 2023-12-31 11:11+0000\n"
+"POT-Creation-Date: 2024-01-03 11:07+0000\n"
+"PO-Revision-Date: 2024-01-03 08:47+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -21,48 +21,54 @@ msgstr ""
 
 #: gallery/admin.py:24 pages/admin.py:47
 msgid "Thumbnail"
-msgstr ""
+msgstr "サムネイル"
 
-#: gallery/models.py:24 gallery/models.py:46 pages/models.py:35
+#: gallery/models.py:25 gallery/models.py:47 pages/models.py:35
 #: pages/models.py:60 pages/models.py:82
 msgid "title"
 msgstr "タイトル"
 
-#: gallery/models.py:25 gallery/models.py:47 pages/models.py:84
+#: gallery/models.py:26 gallery/models.py:48 pages/models.py:84
 msgid "description"
 msgstr "説明文"
 
-#: gallery/models.py:26 pages/models.py:63
+#: gallery/models.py:27 pages/models.py:63
 msgid "image"
 msgstr "画像"
 
-#: gallery/models.py:27 gallery/models.py:49 pages/models.py:62
+#: gallery/models.py:28 gallery/models.py:50 pages/models.py:62
 #: pages/models.py:86
 msgid "live"
 msgstr "表示"
 
-#: gallery/models.py:28 gallery/models.py:50 pages/models.py:64
+#: gallery/models.py:29 gallery/models.py:51 pages/models.py:64
 #: pages/models.py:85
 msgid "date"
 msgstr "日付"
 
-#: gallery/models.py:48
+#: gallery/models.py:49
 msgid "video"
-msgstr ""
+msgstr "動画"
 
 #: gallery/templates/gallery/photo_detail.html:30
-#, fuzzy
-#| msgid "VIEW ALL TOUR DATES"
 msgid "VIEW ALL PHOTOS"
-msgstr "せべての演出スケジュールを表示"
+msgstr "せべての写真を表示"
 
-#: gallery/templates/gallery/photos.html:7 templates/nav_bar.html:81
+#: gallery/templates/gallery/photos.html:11 templates/nav_bar.html:81
 msgid "Photos"
-msgstr ""
+msgstr "写真"
 
-#: gallery/templates/gallery/videos.html:7 templates/nav_bar.html:88
+#: gallery/templates/gallery/video_detail.html:27
+msgid "VIEW ALL VIDEOS"
+msgstr "せべての動画を表示"
+
+#: gallery/templates/gallery/videos.html:11 templates/nav_bar.html:88
 msgid "Videos"
-msgstr ""
+msgstr "動画"
+
+#: gallery/templates/gallery/videos.html:24
+msgid "DETAILS"
+msgstr "詳細"
 
 #: murasaki/settings/base.py:138
 msgid "English"
@@ -144,12 +150,6 @@ msgstr "会場"
 msgid "VIEW ALL TOUR DATES"
 msgstr "せべての演出スケジュールを表示"
 
-#: pages/templates/pages/video_detail.html:30
-#, fuzzy
-#| msgid "VIEW ALL TOUR DATES"
-msgid "VIEW ALL VIDEOS"
-msgstr "せべての演出スケジュールを表示"
-
 #: templates/nav_bar.html:72
 msgid "Media"
-msgstr ""
+msgstr "メディア"
