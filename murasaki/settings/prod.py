@@ -1,8 +1,19 @@
 from .base import *
 import dj_database_url
 
+DEBUG = False
+
 # https://docs.djangoproject.com/en/3.0/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []
+
+# ref: https://docs.render.com/deploy-django
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+
+# We have to set the media root to use `/var/data` because that's where Render
+# stores persistent data.
+MEDIA_ROOT = '/var/data/media'
 
 # django-embed-video settings
 # ref: https://github.com/jazzband/django-embed-video/issues/172
