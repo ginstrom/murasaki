@@ -3,7 +3,95 @@
 {% load static %}
 
 {% block content %}
-    <div class="container">
-        <h1>{{ _('Photos') }}</h1>
+
+<div class="container w-100">
+    {# display photos in 4x4 grid #}
+    <div class="row">
+        <div class="col-md-12 center-block text-center">
+            <h1>{{ _('Photos') }}</h1>
+        </div>
+    {% for photo in photos %}
+        <div class="col-3 col-lg-3 col-md-3 col-sm-6 col-xs-12 center-block" style="margin-bottom: 5px;">
+            <a href="{{ photo.get_absolute_url }}">
+                {# if there is no image, just show the text #}
+                {% if photo.image %}
+                <img
+                        src="{{ photo.image.url }}"
+                        class="shadow-1-strong rounded img-fluid"
+                        class="img-fluid"
+                        alt="{{ photo.title }}"
+                >
+                {% else %}
+                {{ photo.title }}
+                {% endif %}
+            </a>
+        </div>
+    {% endfor %}
     </div>
+
+    {# navigation #}
+    <div class="row">
+        <nav aria-label="Page navigation" style="margin-top: 20px;">
+            <ul class="pagination">
+                {% if photos.has_previous %}
+                <li class="page-item">
+                    <a
+                            class="page-link"
+                            href="{{ absolute_url }}?page={{ photos.previous_page_number }}"
+                            aria-label="Previous"
+                    >
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a
+                            class="page-link"
+                            href="{{ absolute_url }}?page={{ photos.previous_page_number }}"
+                    >
+                        <span aria-hidden="true">{{ photos.previous_page_number }}</span>
+                    </a>
+                </li>
+                {% else %}
+                <li class="page-item disabled" aria-disabled="true">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&laquo;</a>
+                </li>
+                {% endif %}
+
+                <li class="page-item active" aria-current="page">
+                    <a
+                            class="page-link"
+                            href="{{ absolute_url }}?page={{ photos.number }}"
+                    >
+                        <span aria-hidden="true">{{ photos.number }}</span>
+                    </a>
+                </li>
+
+                {% if photos.has_next %}
+                <li class="page-item">
+                    <a
+                            class="page-link"
+                            href="{{ absolute_url }}?page={{ photos.next_page_number }}"
+                    >
+                        <span aria-hidden="true">{{ photos.next_page_number }}</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a
+                            class="page-link"
+                            href="{{ absolute_url }}?page={{ photos.next_page_number }}"
+                            aria-label="Next"
+                    >
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                {% else %}
+                <li class="page-item disabled" aria-disabled="true">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&raquo;</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+
+</div>
 {% endblock content %}

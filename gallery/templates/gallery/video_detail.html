@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load static %}
+{% load embed_video_tags %}
 
 {% block title_suffix %}
 :: {{ video.title }}
@@ -14,11 +15,7 @@
             <p>{{ video.date }}</p>
         </div>
         <div class="col-md-12">
-            <img
-                    alt="{{ video.title }}"
-                    src="{{ video.image.url }}"
-                    class="img-fluid"
-            >
+            {% video video.video "large" %}
         </div>
         <div class="col-md-12">
             <p>{{ video.description|safe }}</p>
