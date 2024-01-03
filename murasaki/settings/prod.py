@@ -13,7 +13,7 @@ if RENDER_EXTERNAL_HOSTNAME:
 
 # We have to set the media root to use `/var/data` because that's where Render
 # stores persistent data.
-MEDIA_ROOT = '/var/data/media'
+MEDIA_ROOT = '/var/data/media/'
 
 # django-embed-video settings
 # ref: https://github.com/jazzband/django-embed-video/issues/172
