@@ -36,6 +36,7 @@ class PhotoAdmin(TranslatableAdmin):
             obj.create_translation(
                 obj.get_switch_language(),
                 title=obj.title,
+                image=obj.image,
                 description=obj.description,
                 date=obj.date,
                 live=obj.live,
