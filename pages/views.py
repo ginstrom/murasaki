@@ -14,9 +14,11 @@ def get_page_or_default(page_type: str, language_code: str = 'en'):
     Gets the Page object with the specified page type,
     or creates a default object
     """
-    page = Page.objects.language(language_code).filter(translations__page_type=page_type).first()
+    page = Page.objects.translated(page_type=page_type).first()
     if page:
         return page
+
+    # Create a default page
     page = Page()
     page.set_current_language('en')
     for label, name in Page.PageType.choices:
@@ -24,6 +26,12 @@ def get_page_or_default(page_type: str, language_code: str = 'en'):
             page.title = name
             page.page_type = label
             page.save()
+            page.create_translation(
+                'ja',
+                title=name,
+                page_type=label,
+                live=True,
+            )
             page.set_current_language(language_code)
             return page
 
