@@ -38,8 +38,8 @@ class NewsItemAdmin(TranslatableAdmin):
         """
         if obj.image:
             try:
-                width = min(obj.image.width, 100)
-                height = min(obj.image.height, 100)
+                width = min(obj.image.width or 100, 100)
+                height = min(obj.image.height or 100, 100)
                 return mark_safe(f'<img src="{obj.image.url}" width="{width}" height="{height}" />')
             except Exception:
                 pass
