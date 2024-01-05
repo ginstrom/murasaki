@@ -7,8 +7,33 @@ Tests for the custom `save_model()' override
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
 
-from pages.admin import TourDateAdmin, NewsItemAdmin
-from pages.models import TourDate, NewsItem
+from pages.admin import PageAdmin, TourDateAdmin, NewsItemAdmin
+from pages.models import Page, TourDate, NewsItem
+
+
+class PageAdminTests(TestCase):
+    """
+    Test the custom functionality of the PageAdmin class:
+        - creation prevented
+        - deletion prevented
+    """
+
+    def tearDown(self) -> None:
+        Page.objects.all().delete()
+
+    def test_has_add_permission(self):
+        """
+        Test that the add permission is disabled
+        """
+        admin = PageAdmin(model=Page, admin_site=None)
+        self.assertFalse(admin.has_add_permission(request=None))
+
+    def test_has_delete_permission(self):
+        """
+        Test that the delete permission is disabled
+        """
+        admin = PageAdmin(model=Page, admin_site=None)
+        self.assertFalse(admin.has_delete_permission(request=None))
 
 
 class TourDateAdminTests(TestCase):
