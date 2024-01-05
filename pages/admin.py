@@ -7,7 +7,22 @@ from .models import Page, NewsItem, TourDate
 
 
 class PageAdmin(TranslatableAdmin):
+    """
+    Admin for the Page model.
+
+    We prevent creation and deletion from the admin interface.
+    This is because pages are singletons; we want them created once and not added or removed.
+
+    Additionally, we prevent changing the page type.
+    """
     list_display = ('title', 'page_type')
+    readonly_fields = ('page_type',)
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
 
 
 class TourDateAdmin(TranslatableAdmin):
@@ -38,8 +53,8 @@ class NewsItemAdmin(TranslatableAdmin):
         """
         if obj.image:
             try:
-                width = min(obj.image.width, 100)
-                height = min(obj.image.height, 100)
+                width = min(obj.image.width or 100, 100)
+                height = min(obj.image.height or 100, 100)
                 return mark_safe(f'<img src="{obj.image.url}" width="{width}" height="{height}" />')
             except Exception:
                 pass

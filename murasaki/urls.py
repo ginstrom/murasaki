@@ -33,6 +33,8 @@ urlpatterns = i18n_patterns(
       path('ckeditor/', include('ckeditor_uploader.urls')),
   ]
 
+# The `static` method only works for debug mode.
+# Otherwise we need to serve the media files ourselves.
 if settings.DEBUG:
     urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 else:
@@ -41,5 +43,3 @@ else:
             'document_root': settings.MEDIA_ROOT,
         }),
     ]
-
-
