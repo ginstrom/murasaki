@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-05 05:27+0000\n"
+"POT-Creation-Date: 2024-01-07 09:43+0000\n"
 "PO-Revision-Date: 2024-01-03 15:09+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
-#: gallery/admin.py:24 pages/admin.py:62
+#: gallery/admin.py:24 pages/admin.py:63
 msgid "Thumbnail"
 msgstr "サムネイル"
 
