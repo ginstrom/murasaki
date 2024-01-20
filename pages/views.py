@@ -52,7 +52,7 @@ def live_objects(model, language_code: str = 'en'):
     """
     Returns the live objects for the specified model
     """
-    return model.objects.language(language_code).filter(translations__live=True).order_by("-translations__date")
+    return model.objects.translated(language_code, live=True).order_by("-translations__date")
 
 
 def home(request):
