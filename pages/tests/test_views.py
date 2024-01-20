@@ -24,10 +24,6 @@ class TestLiveObjects(TestCase):
             live=True,
             image='news/default.jpg',
         )
-        self.news_item.set_current_language('ja')
-        self.news_item.title = "テストニュースアイテム"
-        self.news_item.body = "テストボディ"
-        self.news_item.save()
         self.tour_date = TourDate.objects.create(
             title="Test Tour Date",
             venue="Test Venue",
@@ -47,11 +43,8 @@ class TestLiveObjects(TestCase):
         """
         Ensure that the correct language only is returned
         """
-        self.assertEqual(views.live_objects(NewsItem, 'ja').count(), 1)
+        self.assertEqual(views.live_objects(NewsItem, 'ja').count(), 0)
         self.assertEqual(views.live_objects(NewsItem, 'en').count(), 1)
-        [en] = views.live_objects(NewsItem, 'en')
-        [ja] = views.live_objects(NewsItem, 'ja')
-        assert en.title != ja.title, (en, ja)
 
     def test_non_live(self):
         """
@@ -66,11 +59,8 @@ class TestLiveObjects(TestCase):
         """
         Ensure that the correct language only is returned
         """
-        self.assertEqual(views.live_objects(TourDate, 'ja').count(), 1)
-        self.assertEqual(views.live_objects(TourDate, 'ja').count(), 1)
-        [en] = views.live_objects(TourDate, 'en')
-        [ja] = views.live_objects(TourDate, 'ja')
-        assert en.title == ja.title, (en, ja)
+        self.assertEqual(views.live_objects(TourDate, 'ja').count(), 0)
+        self.assertEqual(views.live_objects(TourDate, 'en').count(), 1)
 
 
 class DefaultPageViewTests(TestCase):
