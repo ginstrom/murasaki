@@ -48,6 +48,13 @@ def get_page_context(page_type, language_code):
     }
 
 
+def live_objects(model):
+    """
+    Returns the live objects for the specified model
+    """
+    return model.objects.translated(live=True).order_by("-translations__date")
+
+
 def home(request):
     """
     Serves the site homepage
@@ -55,9 +62,11 @@ def home(request):
     language = request.LANGUAGE_CODE
     context = get_page_context("home", language_code=language)
     # Add 4 latest news items to the context
-    context['news_items'] = NewsItem.objects.translated(language).filter(translations__live=True).order_by("-translations__date")[:4]
+    news_items = live_objects(NewsItem)
+    context['news_items'] = news_items[:4]
     # Add 4 latest tour dates to the context
-    context['tour_dates'] = TourDate.objects.translated(language).order_by("-translations__date")[:4]
+    tour_dates = live_objects(TourDate)
+    context['tour_dates'] = tour_dates[:4]
     return render(request, "pages/home.html", context)
 
 
@@ -68,7 +77,7 @@ def news(request):
     language = request.LANGUAGE_CODE
     context = get_page_context("news", language_code=language)
     page = request.GET.get("page", 1)
-    news_items = NewsItem.objects.translated(live=True).order_by("-translations__date")
+    news_items = live_objects(NewsItem)
     context['news_items'] = Paginator(news_items, 10).get_page(page)
     return render(request, "pages/news.html", context)
 
