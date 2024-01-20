@@ -16,6 +16,7 @@ class PageAdmin(TranslatableAdmin):
     Additionally, we prevent changing the page type.
     """
     list_display = ('title', 'page_type')
+    list_filter = ('translations__language_code', 'translations__page_type')
     readonly_fields = ('page_type',)
 
     def has_add_permission(self, request, obj=None):
