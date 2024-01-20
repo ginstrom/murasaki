@@ -18,12 +18,16 @@ class TestLiveObjects(TestCase):
         """
         Set up the test case
         """
-        self.news_item = NewsItem.objects.create(
+        self.news_item = NewsItem.objects.language('en').create(
             title="Test News Item",
             body="Test body",
             live=True,
             image='news/default.jpg',
         )
+        self.news_item.set_current_language('ja')
+        self.news_item.title = "テストニュースアイテム"
+        self.news_item.body = "テストボディ"
+        self.news_item.save()
         self.tour_date = TourDate.objects.create(
             title="Test Tour Date",
             venue="Test Venue",
@@ -39,16 +43,34 @@ class TestLiveObjects(TestCase):
         NewsItem.objects.all().delete()
         TourDate.objects.all().delete()
 
-    def test_live_objects(self):
+    def test_live_objects_news(self):
         """
         Ensure that the correct language only is returned
         """
-        with translation.override('en'):
-            self.assertEqual(views.live_objects(NewsItem).count(), 1)
-            self.assertEqual(views.live_objects(TourDate).count(), 1)
-        with translation.override('ja'):
-            self.assertEqual(views.live_objects(NewsItem).count(), 0)
-            self.assertEqual(views.live_objects(TourDate).count(), 0)
+        self.assertEqual(views.live_objects(NewsItem, 'ja').count(), 1)
+        self.assertEqual(views.live_objects(NewsItem, 'en').count(), 1)
+        [en] = views.live_objects(NewsItem, 'en')
+        [ja] = views.live_objects(NewsItem, 'ja')
+        assert en.title != ja.title, (en, ja)
+
+    def test_non_live(self):
+        """
+        Ensure that the correct language only is returned
+        """
+        self.news_item.live = False
+        self.news_item.save()
+        self.assertEqual(views.live_objects(NewsItem, 'ja').count(), 0)
+        self.assertEqual(views.live_objects(NewsItem, 'en').count(), 0)
+
+    def test_live_objects_tours(self):
+        """
+        Ensure that the correct language only is returned
+        """
+        self.assertEqual(views.live_objects(TourDate, 'ja').count(), 1)
+        self.assertEqual(views.live_objects(TourDate, 'ja').count(), 1)
+        [en] = views.live_objects(TourDate, 'en')
+        [ja] = views.live_objects(TourDate, 'ja')
+        assert en.title == ja.title, (en, ja)
 
 
 class DefaultPageViewTests(TestCase):
