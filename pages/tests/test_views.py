@@ -6,7 +6,50 @@ from django.test import TestCase
 from django.urls import reverse
 from django.utils import translation
 
+from pages import views
 from pages.models import Page, NewsItem, TourDate
+
+
+class TestLiveObjects(TestCase):
+    """
+    Test the live_objects() function
+    """
+    def setUp(self) -> None:
+        """
+        Set up the test case
+        """
+        self.news_item = NewsItem.objects.create(
+            title="Test News Item",
+            body="Test body",
+            live=True,
+            image='news/default.jpg',
+        )
+        self.tour_date = TourDate.objects.create(
+            title="Test Tour Date",
+            venue="Test Venue",
+            description="Test Description",
+            date="2019-01-01",
+            live=True,
+        )
+
+    def tearDown(self) -> None:
+        """
+        Tear down the test case
+        """
+        NewsItem.objects.all().delete()
+        TourDate.objects.all().delete()
+
+    def test_live_objects(self):
+        """
+        Ensure that the correct language only is returned
+        """
+        with translation.override('en'):
+            self.assertEqual(views.live_objects(NewsItem).count(), 1)
+            self.assertEqual(views.live_objects(TourDate).count(), 1)
+        with translation.override('ja'):
+            self.assertEqual(views.live_objects(NewsItem).count(), 0)
+            self.assertEqual(views.live_objects(TourDate).count(), 0)
+
 
 class DefaultPageViewTests(TestCase):
     """
